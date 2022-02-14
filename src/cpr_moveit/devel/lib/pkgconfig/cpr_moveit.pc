@@ -1,0 +1,8 @@
+prefix=/home/mpt/cpr_mover/src/cpr_moveit/devel
+
+Name: cpr_moveit
+Description: Description of cpr_moveit
+Version: 0.3.0
+Cflags: 
+Libs: -L${prefix}/lib 
+Requires: 
