@@ -1,0 +1,11 @@
+moveit_setup_assistant_config:
+  URDF:
+    package: cpr_robot
+    relative_path: robots/CPRMover6.urdf.xacro
+    xacro_args: ""
+  SRDF:
+    relative_path: config/CPRMover6.srdf
+  CONFIG:
+    author_name: Farshad Nozad Heravi
+    author_email: farshad.nozadheravi@iit.it
+    generated_timestamp: 1644873429
