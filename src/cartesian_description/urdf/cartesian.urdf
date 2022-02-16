@@ -7,19 +7,19 @@
 		</joint>
 	<link name="link1" >
 		<collision>
-			<origin rpy="-1.57 0 0" xyz="0 0 0" />
+			<origin rpy="0 0 0" xyz="0 0 0" />
 			<geometry>
-				<mesh filename="package://cartesian_description/meshes/link1.stl" />
+				<mesh filename="package://cartesian_description/meshes/base_link.stl" />
 			</geometry>
 		</collision>
 		<visual>
-			<origin rpy="-1.57 0 0" xyz="0 0 0" />
+			<origin rpy="0 0 0" xyz="0 0 0" />
 			<geometry>
-				<mesh filename="package://cartesian_description/meshes/link1.stl" />
+				<mesh filename="package://cartesian_description/meshes/base_link.stl" />
 			</geometry>
 		</visual>
 		<inertial>
-			<origin xyz="0 0 1" rpy="0 0 0"/>
+			<origin xyz="0 0 0" rpy="0 0 0"/>
 			<mass value="1"/>
 			<inertia
 			ixx="1.0" ixy="0.0" ixz="0.0"
@@ -41,13 +41,13 @@
 
 	<link name="link2" >
 		<collision>
-			<origin rpy="-1.57 0 0" xyz="0 0 88" />
+			<origin rpy="0 0 1.57" xyz="120 0 55" />
 			<geometry>
 				<mesh filename="package://cartesian_description/meshes/link2.stl" />
 			</geometry>
 		</collision>
 		<visual>
-			<origin rpy="-1.57 0 0" xyz="0 0 88" />
+			<origin rpy="0 0 1.57" xyz="120 0 55" />
 			<geometry>
 				<mesh filename="package://cartesian_description/meshes/link2.stl" />
 			</geometry>
@@ -75,13 +75,13 @@
 
 	<link name="link3" >
 		<collision>
-			<origin rpy="-1.57 0 0" xyz="0 0 135" />
+			<origin rpy="0 0 0" xyz="120 150 65" />
 			<geometry>
 				<mesh filename="package://cartesian_description/meshes/link3.stl" />
 			</geometry>
 		</collision>
 		<visual>
-			<origin rpy="-1.57 0 0" xyz="0 0 135" />
+			<origin rpy="0 0 0" xyz="120 150 65" />
 			<geometry>
 				<mesh filename="package://cartesian_description/meshes/link3.stl" />
 			</geometry>
