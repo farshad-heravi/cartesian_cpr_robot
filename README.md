@@ -12,3 +12,18 @@ and source the package
 ```
 source devel/setup.bash
 ```
+
+
+# cartesian_description package
+The package has three launch files which can be used for bringup, rviz, and gazebo
+```
+roslaunch cartesian_description cartesian_bringup.launch
+```
+or
+```
+roslaunch cartesian_description cartesian_rviz.launch
+```
+or
+```
+roslaunch cartesian_description cartesian_gazebo.launch
+```
