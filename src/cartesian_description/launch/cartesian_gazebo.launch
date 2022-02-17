@@ -1,0 +1,32 @@
+<?xml version="1.0" ?>
+<launch>
+	<arg name="world" value="$(find cartesian_description)/worlds/my_world.world" />
+	<arg name="debug" value="false" />
+	<arg name="gui" value="true" />
+	<arg name="pause" value="false" />
+	
+	<!-- Load empty world -->
+	<include file="$(find gazebo_ros)/launch/empty_world.launch">
+		<arg name="world_name" value="$(arg world)" />
+		<arg name="paused" value="false"/>
+		<arg name="use_sim_time" value="true"/>
+		<arg name="gui" value="true"/>
+		<arg name="recording" value="false"/>
+		<arg name="debug" value="true"/>
+		<arg name="verbose" value="true"/>
+	</include>
+
+	<!-- Load robot into ros -->
+	<include file="$(find cartesian_description)/launch/cartesian_bringup.launch" />
+
+	<!-- spawn the robot in gazebo -->
+	<arg name="x" value="0" />
+	<arg name="y" value="0" />
+	<arg name="z" value="0" />
+	<node	name="cartesian_robot"
+			pkg="gazebo_ros"
+			type="spawn_model"
+			output="screen"
+			args="-urdf -param robot_description -model robot1 -x $(arg x) -y $(arg y) -z $(arg z)" />
+	
+</launch>

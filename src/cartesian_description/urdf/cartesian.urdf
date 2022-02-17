@@ -1,0 +1,131 @@
+<?xml version="1.0" ?>
+<robot name="cartesian_robot" >
+	<link name="dummy" > </link>
+		<joint name="dummy_joint" type="fixed">
+			<parent link="dummy"/>
+			<child link="link1"/>
+		</joint>
+	<link name="link1" >
+		<collision>
+			<origin rpy="0 0 0" xyz="0 0 0" />
+			<geometry>
+				<mesh filename="package://cartesian_description/meshes/base_link.stl" scale="0.001 0.001 0.001"/>
+			</geometry>
+		</collision>
+		<visual>
+			<origin rpy="0 0 0" xyz="0 0 0" />
+			<geometry>
+				<mesh filename="package://cartesian_description/meshes/base_link.stl" scale="0.001 0.001 0.001" />
+			</geometry>
+		</visual>
+		<inertial>
+			<origin xyz="0 0 0" rpy="0 0 0"/>
+			<mass value="0.6"/>
+			<inertia
+			ixx="1.0" ixy="0.0" ixz="0.0"
+			iyy="1.0" iyz="0.0"
+			izz="1.0"/>
+		</inertial>
+		<material name="blue">
+			<color rgba="${0/255} ${0/255} ${255/255} 1.0"/>
+		</material>
+	</link>
+
+		<joint name="link1_link2" type="prismatic" >
+			<origin xyz="0.120 0 0.055"/>
+			<parent link="link1"/>
+			<child link="link2"/>
+			<limit effort="1000.0" lower="-10" upper="1000" velocity="0.5"/>
+			<dynamics damping="0.3" />
+		</joint>
+
+	<link name="link2" >
+		<collision>
+			<origin rpy="0 0 1.57" xyz="0 0 0" />
+			<geometry>
+				<mesh filename="package://cartesian_description/meshes/link2.stl" scale="0.001 0.001 0.001"/>
+			</geometry>
+		</collision>
+		<visual>
+			<origin rpy="0 0 1.57" xyz="0 0 0" />
+			<geometry>
+				<mesh filename="package://cartesian_description/meshes/link2.stl" scale="0.001 0.001 0.001"/>
+			</geometry>
+		</visual>
+		<inertial>
+			<origin xyz="0 0 1" rpy="0 0 0"/>
+			<mass value="0.3"/>
+			<inertia
+			ixx="0.3" ixy="0.0" ixz="0.0"
+			iyy="0.3" iyz="0.0"
+			izz="1.3"/>
+		</inertial>
+		<material name="red">
+			<color rgba="${255/255} ${0/255} ${0/255} 1.0"/>
+		</material>
+	</link>
+
+		<joint name="link2_link3" type="prismatic" >
+			<origin xyz="0 0.150 0.010"/>
+			<axis xyz="0 1 0" />
+			<parent link="link2"/>
+			<child link="link3"/>
+			<limit effort="1000.0" lower="-1" upper="1" velocity="0.5"/>
+			<dynamics damping="0.3" />
+		</joint>
+
+	<link name="link3" >
+		<collision>
+			<origin rpy="0 0 0" xyz="0 0 0" />
+			<geometry>
+				<mesh filename="package://cartesian_description/meshes/link3.stl" scale="0.001 0.001 0.001"/>
+			</geometry>
+		</collision>
+		<visual>
+			<origin rpy="0 0 0" xyz="0 0 0" />
+			<geometry>
+				<mesh filename="package://cartesian_description/meshes/link3.stl" scale="0.001 0.001 0.001"/>
+			</geometry>
+		</visual>
+		<inertial>
+			<origin xyz="0 0 1" rpy="0 0 0"/>
+			<mass value="0.100"/>
+			<inertia
+			ixx="0.1" ixy="0.0" ixz="0.0"
+			iyy="0.1" iyz="0.0"
+			izz="0.1"/>
+		</inertial>
+		<material name="green">
+			<color rgba="${0/255} ${255/255} ${0/255} 1.0"/>
+		</material>
+	</link>
+
+
+	<!-- Gazebo stuff -->
+	<transmission name="tran_joint1">
+		<type>transmission_interface/SimpleTransmission</type>
+		<joint name="link1_link2">
+			<hardwareInterface>EffortJointInterface</hardwareInterface>
+		</joint>
+		<actuator name="link1_link2">
+			<hardwareInterface>EffortJointInterface</hardwareInterface>
+			<mechanicalReduction>1</mechanicalReduction>
+		</actuator>
+	</transmission>
+	<transmission name="tran_joint2">
+		<type>transmission_interface/SimpleTransmission</type>
+		<joint name="link2_link3">
+			<hardwareInterface>EffortJointInterface</hardwareInterface>
+		</joint>
+		<actuator name="link2_link3">
+			<hardwareInterface>EffortJointInterface</hardwareInterface>
+			<mechanicalReduction>1</mechanicalReduction>
+		</actuator>
+	</transmission>
+
+	<gazebo>
+		<plugin name="gazebo_ros_control" filename="libgazebo_ros_control.so">
+			<robotNamespace>/cartesian_robot</robotNamespace>
+		</plugin>
+	</gazebo>
+</robot>
