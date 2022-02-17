@@ -12,7 +12,7 @@
 		<arg name="use_sim_time" value="true"/>
 		<arg name="gui" value="true"/>
 		<arg name="recording" value="false"/>
-		<arg name="debug" value="false"/>
+		<arg name="debug" value="true"/>
 		<arg name="verbose" value="true"/>
 	</include>
 
@@ -22,7 +22,7 @@
 	<!-- spawn the robot in gazebo -->
 	<arg name="x" value="0" />
 	<arg name="y" value="0" />
-	<arg name="z" value="0.5" />
+	<arg name="z" value="0" />
 	<node	name="cartesian_robot"
 			pkg="gazebo_ros"
 			type="spawn_model"
