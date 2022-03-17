@@ -1,3 +1,6 @@
 [submodule "src/cpr_robot"]
 	path = src/cpr_robot
 	url = git@github.com:farshad-heravi/cpr_robot.git
+[submodule "src/maxon_driver"]
+	path = src/maxon_driver
+	url = git@github.com:farshad-heravi/maxon_driver.git
