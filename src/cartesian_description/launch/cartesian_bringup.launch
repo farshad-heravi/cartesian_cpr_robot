@@ -1,5 +1,6 @@
 <launch>
 	<arg name="simulation" default="false" />
+	<arg name="publish_joint_states" default="false" />
 	
 	<param if="$(arg simulation)" name="robot_description" textfile="$(find cartesian_description)/urdf/cartesian_robot_simulation.urdf" />	
 	<param unless="$(arg simulation)" name="robot_description" textfile="$(find cartesian_description)/urdf/cartesian_robot_hardware.urdf" />	
@@ -9,6 +10,6 @@
 
 	<!-- joint state publisher with gui -->
 	<param name="use_gui" value="true" />
-	<!-- <node pkg="joint_state_publisher" type="joint_state_publisher" name="joint_state_publisher"/> -->
+	<node if="$(arg publish_joint_states)" pkg="joint_state_publisher" type="joint_state_publisher" name="joint_state_publisher"/>
 	
 </launch>

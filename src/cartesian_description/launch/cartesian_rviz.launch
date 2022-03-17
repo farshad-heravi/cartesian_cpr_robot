@@ -1,14 +1,16 @@
 <launch>
 	<arg name="simulation" default="false" />
+	<arg name="publish_joint_states" default="false" />
 
 	<param name="use_sim_time" value="false" />
 	<!-- Load robot into ros -->
 	<include file="$(find cartesian_description)/launch/cartesian_bringup.launch" >
 		<arg name="simulation" value="$(arg simulation)" />
+		<arg name="publish_joint_states" value=" $(arg publish_joint_states)" />
 	</include>
 
 	<!-- Show in Rviz   -->
-	<node name="rviz" pkg="rviz" type="rviz" args="-d $(find cartesian_description)/config/config.rviz"/>
+	<node name="rviz" pkg="rviz" type="rviz" args="-d $(find cartesian_description)/config/config.rviz" />
 	<!-- <node name="rviz" pkg="rviz" type="rviz" args=""/> -->
 
 </launch>
