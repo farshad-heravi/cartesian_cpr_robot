@@ -8,9 +8,8 @@ Panels:
         - /Status1
         - /RobotModel1
         - /RobotModel1/Links1
-        - /RobotModel1/Links1/link11
-        - /RobotModel1/Links1/link21
         - /RobotModel1/Links1/link31
+        - /TF1
       Splitter Ratio: 0.5
     Tree Height: 866
   - Class: rviz/Selection
@@ -67,23 +66,28 @@ Visualization Manager:
         Expand Link Details: false
         Expand Tree: false
         Link Tree Style: Links in Alphabetic Order
+        circular_link:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: true
         dummy:
           Alpha: 1
           Show Axes: false
           Show Trail: false
         link1:
           Alpha: 1
-          Show Axes: true
+          Show Axes: false
           Show Trail: false
           Value: true
         link2:
           Alpha: 1
-          Show Axes: true
+          Show Axes: false
           Show Trail: false
           Value: true
         link3:
           Alpha: 1
-          Show Axes: true
+          Show Axes: false
           Show Trail: false
           Value: true
       Name: RobotModel
@@ -92,6 +96,36 @@ Visualization Manager:
       Update Interval: 0
       Value: true
       Visual Enabled: true
+    - Class: rviz/TF
+      Enabled: true
+      Frame Timeout: 15
+      Frames:
+        All Enabled: true
+        circular_link:
+          Value: true
+        dummy:
+          Value: true
+        link1:
+          Value: true
+        link2:
+          Value: true
+        link3:
+          Value: true
+      Marker Alpha: 1
+      Marker Scale: 0.20000000298023224
+      Name: TF
+      Show Arrows: true
+      Show Axes: true
+      Show Names: true
+      Tree:
+        dummy:
+          link1:
+            link2:
+              link3:
+                circular_link:
+                  {}
+      Update Interval: 0
+      Value: true
   Enabled: true
   Global Options:
     Background Color: 48; 48; 48
@@ -120,7 +154,7 @@ Visualization Manager:
   Views:
     Current:
       Class: rviz/Orbit
-      Distance: 1.3956255912780762
+      Distance: 1.412185549736023
       Enable Stereo Rendering:
         Stereo Eye Separation: 0.05999999865889549
         Stereo Focal Distance: 1
@@ -128,9 +162,9 @@ Visualization Manager:
         Value: false
       Field of View: 0.7853981852531433
       Focal Point:
-        X: 0.4812770485877991
-        Y: 0.22572900354862213
-        Z: -0.14154735207557678
+        X: 0.4142192006111145
+        Y: 0.28477445244789124
+        Z: -0.1462390273809433
       Focal Shape Fixed Size: false
       Focal Shape Size: 0.05000000074505806
       Invert Z Axis: false

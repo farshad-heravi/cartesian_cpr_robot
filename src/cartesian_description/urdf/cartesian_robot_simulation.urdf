@@ -100,6 +100,29 @@
 		</material>
 	</link>
 
+		<joint name="joint3" type="revolute" >
+			<origin xyz="0.08 0.0 0.010"/>	<!-- CONFIG -->
+			<axis xyz="0 0 1" />
+			<parent link="link3"/>
+			<child link="circular_link"/>
+			<limit effort="1000.0" lower="-1" upper="1" velocity="0.5"/>
+			<dynamics damping="0.3" />
+		</joint>
+
+	<link name="circular_link" >
+		<visual>
+			<origin rpy="0 0 0" xyz="0 0 0" /> <!-- CONFIG -->
+			<geometry>
+				<mesh filename="package://cartesian_description/meshes/circular_link.stl" scale="0.01 0.01 0.01"/>
+			</geometry>
+		</visual>
+		<collision>
+			<origin rpy="0 0 0" xyz="0 0 0" /> <!-- CONFIG -->
+			<geometry>
+				<mesh filename="package://cartesian_description/meshes/circular_link.stl" scale="0.01 0.01 0.01"/>
+			</geometry>
+		</collision>
+	</link>
 
 	<!-- Gazebo stuff -->
 	<transmission name="tran_joint1">
