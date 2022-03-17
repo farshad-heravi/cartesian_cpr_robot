@@ -100,10 +100,42 @@
 		</material>
 	</link>
 
-		<joint name="joint3" type="revolute" >
-			<origin xyz="0.08 0.0 0.010"/>	<!-- CONFIG -->
-			<axis xyz="0 0 1" />
+		<joint name="third_motor_mounting_joint" type="fixed" >
+			<origin xyz="0.0 0.0 0.0"/>	<!-- CONFIG -->
 			<parent link="link3"/>
+			<child link="mounting_link"/>
+		</joint>
+	
+	<link name="mounting_link" >
+		<collision>
+			<origin rpy="0 0 -1.5707" xyz="-0.03 0 0" />	<!-- CONFIG -->
+			<geometry>
+				<mesh filename="package://cartesian_description/meshes/gearbasev1.stl" scale="0.0254 0.0254 0.0254"/>
+			</geometry>
+		</collision>
+		<visual>
+			<origin rpy="0 0 -1.5707" xyz="-0.03 0 0" />	<!-- CONFIG -->
+			<geometry>
+				<mesh filename="package://cartesian_description/meshes/gearbasev1.stl" scale="0.0254 0.0254 0.0254"/>
+			</geometry>
+		</visual>
+		<inertial>
+			<origin xyz="0 0 1" rpy="0 0 0"/>
+			<mass value="0.100"/>
+			<inertia
+			ixx="0.1" ixy="0.0" ixz="0.0"
+			iyy="0.1" iyz="0.0"
+			izz="0.1"/>
+		</inertial>
+		<material name="green">
+			<color rgba="${0/255} ${255/255} ${0/255} 1.0"/>
+		</material>
+	</link>
+
+		<joint name="joint3" type="continuous" >
+			<origin xyz="0.305 0.0 0.021"/>	<!-- CONFIG -->
+			<axis xyz="0 0 1" />
+			<parent link="mounting_link"/>
 			<child link="circular_link"/>
 			<limit effort="1000.0" lower="-1" upper="1" velocity="0.5"/>
 			<dynamics damping="0.3" />
@@ -113,15 +145,23 @@
 		<visual>
 			<origin rpy="0 0 0" xyz="0 0 0" /> <!-- CONFIG -->
 			<geometry>
-				<mesh filename="package://cartesian_description/meshes/circular_link.stl" scale="0.01 0.01 0.01"/>
+				<mesh filename="package://cartesian_description/meshes/circular_link.stl" scale="0.0254 0.0254 0.0254"/>
 			</geometry>
 		</visual>
 		<collision>
 			<origin rpy="0 0 0" xyz="0 0 0" /> <!-- CONFIG -->
 			<geometry>
-				<mesh filename="package://cartesian_description/meshes/circular_link.stl" scale="0.01 0.01 0.01"/>
+				<mesh filename="package://cartesian_description/meshes/circular_link.stl" scale="0.0254 0.0254 0.0254"/>
 			</geometry>
 		</collision>
+		<inertial>
+			<origin xyz="0 0 1" rpy="0 0 0"/>
+			<mass value="0.100"/>
+			<inertia
+			ixx="0.1" ixy="0.0" ixz="0.0"
+			iyy="0.1" iyz="0.0"
+			izz="0.1"/>
+		</inertial>
 	</link>
 
 	<!-- Gazebo stuff -->
@@ -147,6 +187,18 @@
 			<hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
 			<hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
 			<mechanicalReduction>1</mechanicalReduction>		// CONFIG
+		</actuator>
+	</transmission>
+	<transmission name="tran_joint3">
+		<type>transmission_interface/SimpleTransmission</type>
+		<joint name="joint3">
+			<hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
+			<hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+		</joint>
+		<actuator name="act_joint3">
+			<hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
+			<hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+			<mechanicalReduction>312920.5793</mechanicalReduction>		// CONFIG
 		</actuator>
 	</transmission>
 
