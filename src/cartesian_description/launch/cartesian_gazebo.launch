@@ -17,7 +17,9 @@
 	</include>
 
 	<!-- Load robot into ros -->
-	<include file="$(find cartesian_description)/launch/cartesian_bringup.launch" />
+	<include file="$(find cartesian_description)/launch/cartesian_bringup.launch" >
+		<arg name="simulation" value="true" />
+	</include>
 
 	<!-- spawn the robot in gazebo -->
 	<arg name="x" value="0" />

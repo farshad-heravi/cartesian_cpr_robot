@@ -1,7 +1,11 @@
 <launch>
+	<arg name="simulation" default="false" />
+
 	<param name="use_sim_time" value="false" />
 	<!-- Load robot into ros -->
-	<include file="$(find cartesian_description)/launch/cartesian_bringup.launch" />
+	<include file="$(find cartesian_description)/launch/cartesian_bringup.launch" >
+		<arg name="simulation" value="$(arg simulation)" />
+	</include>
 
 	<!-- Show in Rviz   -->
 	<node name="rviz" pkg="rviz" type="rviz" args="-d $(find cartesian_description)/config/config.rviz"/>

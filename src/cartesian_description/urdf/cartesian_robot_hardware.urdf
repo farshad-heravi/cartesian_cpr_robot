@@ -31,7 +31,7 @@
 		</material>
 	</link>
 
-		<joint name="link1_link2" type="prismatic" >
+		<joint name="joint1" type="prismatic" >
 			<origin xyz="0.120 0 0.055"/>
 			<parent link="link1"/>
 			<child link="link2"/>
@@ -65,7 +65,7 @@
 		</material>
 	</link>
 
-		<joint name="link2_link3" type="prismatic" >
+		<joint name="joint2" type="prismatic" >
 			<origin xyz="0 0.150 0.010"/>
 			<axis xyz="0 1 0" />
 			<parent link="link2"/>
@@ -104,22 +104,26 @@
 	<!-- Gazebo stuff -->
 	<transmission name="tran_joint1">
 		<type>transmission_interface/SimpleTransmission</type>
-		<joint name="link1_link2">
-			<hardwareInterface>EffortJointInterface</hardwareInterface>
+		<joint name="joint1">
+			<hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
+			<hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
 		</joint>
-		<actuator name="link1_link2">
+		<actuator name="act_joint1">
+			<hardwareInterface>PositionJointInterface</hardwareInterface>
 			<hardwareInterface>EffortJointInterface</hardwareInterface>
-			<mechanicalReduction>1</mechanicalReduction>
+			<mechanicalReduction>1</mechanicalReduction>		// CONFIG
 		</actuator>
 	</transmission>
 	<transmission name="tran_joint2">
 		<type>transmission_interface/SimpleTransmission</type>
-		<joint name="link2_link3">
-			<hardwareInterface>EffortJointInterface</hardwareInterface>
+		<joint name="joint2">
+			<hardwareInterface>Poshardware_interface/itionJointInterface</hardwareInterface>
+			<hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
 		</joint>
-		<actuator name="link2_link3">
-			<hardwareInterface>EffortJointInterface</hardwareInterface>
-			<mechanicalReduction>1</mechanicalReduction>
+		<actuator name="act_joint2">
+			<hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
+			<hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+			<mechanicalReduction>1</mechanicalReduction>		// CONFIG
 		</actuator>
 	</transmission>
 

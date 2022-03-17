@@ -1,6 +1,9 @@
 <launch>
+	<arg name="simulation" default="false" />
 	
-	<param name="robot_description" textfile="$(find cartesian_description)/urdf/cartesian.urdf" />	
+	<param if="$(arg simulation)" name="robot_description" textfile="$(find cartesian_description)/urdf/cartesian_robot_simulation.urdf" />	
+	<param unless="$(arg simulation)" name="robot_description" textfile="$(find cartesian_description)/urdf/cartesian_robot_hardware.urdf" />	
+	
 	<!-- robot state publisher -->
   	<node pkg="robot_state_publisher" type="robot_state_publisher" name="robot_state_publisher" />
 
@@ -8,8 +11,4 @@
 	<param name="use_gui" value="true" />
 	<node pkg="joint_state_publisher" type="joint_state_publisher" name="joint_state_publisher"/>
 	
-	
-	
-
-
 </launch>
