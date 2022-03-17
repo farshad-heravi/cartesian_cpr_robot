@@ -1,11 +1,14 @@
 <launch>
 
+  <arg name="joint1_name" default="joint1" />
+  <arg name="joint2_name" default="joint2" />
+
   <!-- Load joint controller configurations from YAML file to parameter server -->
   <rosparam file="$(find cartesian_controller)/config/controllers.yaml" command="load"/>
 
   <!-- load the controllers -->
   <node name="controller_spawner" pkg="controller_manager" type="spawner" respawn="false"
-    output="screen" ns="/cartesian_robot" args="joint1_position_controller joint2_position_controller joint_state_controller"/>
+    output="screen" ns="/cartesian_robot" args="/$(arg joint1_name)/joint1_position_controller /$(arg joint2_name)/joint2_position_controller joint_state_controller"/>
 
   <!-- convert joint states to TF transforms for rviz, etc -->
   <node name="robot_state_publisher" pkg="robot_state_publisher" type="robot_state_publisher"
