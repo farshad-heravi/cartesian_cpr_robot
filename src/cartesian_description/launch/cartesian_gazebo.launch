@@ -4,6 +4,7 @@
 	<arg name="debug" value="false" />
 	<arg name="gui" value="true" />
 	<arg name="pause" value="false" />
+	<arg name="publish_joint_states" value="false" />
 	
 	<!-- Load empty world -->
 	<include file="$(find gazebo_ros)/launch/empty_world.launch">

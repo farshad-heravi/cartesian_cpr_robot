@@ -18,7 +18,8 @@
             args="spawn 
               /$(arg robot_name)/joint_state_controller
               /$(arg robot_name)/$(arg joint1_name)/joint1_position_controller 
-              /$(arg robot_name)/$(arg joint2_name)/joint2_position_controller" />
+              /$(arg robot_name)/$(arg joint2_name)/joint2_position_controller
+              /$(arg robot_name)/$(arg joint3_name)/joint3_position_controller" />
   
   <!-- convert joint states to TF transforms for rviz, etc -->
   <!-- <node name="robot_state_publisher" pkg="robot_state_publisher" type="robot_state_publisher"
