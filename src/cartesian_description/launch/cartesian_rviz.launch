@@ -1,16 +1,22 @@
 <launch>
+	
+	<!-- when including this launch file into another launch file, provide the simulation argument as false if it is not a simulation -->
 	<arg name="simulation" default="false" />
+	<!-- if joint states of the cartesian robot is being published by the joint_states_publisher set this arg as false -->
 	<arg name="publish_joint_states" default="false" />
+	<!-- the ns of the cartesian robot -->
+	<arg name="name_space" default="cartesian_" />
 
-	<param name="use_sim_time" value="false" />
+	<!-- <param name="use_sim_time" value="false" /> -->
 	<!-- Load robot into ros -->
 	<include file="$(find cartesian_description)/launch/cartesian_bringup.launch" >
 		<arg name="simulation" value="$(arg simulation)" />
 		<arg name="publish_joint_states" value=" $(arg publish_joint_states)" />
+		<arg name="name_space" value="$(arg name_space)" />
 	</include>
 
 	<!-- Show in Rviz   -->
-	<node name="rviz" pkg="rviz" type="rviz" args="-d $(find cartesian_description)/config/config.rviz" />
+	<node name="$(arg name_space)_rviz" pkg="rviz" type="rviz" args="-d $(find cartesian_description)/config/config.rviz" />
 	<!-- <node name="rviz" pkg="rviz" type="rviz" args=""/> -->
 
 </launch>

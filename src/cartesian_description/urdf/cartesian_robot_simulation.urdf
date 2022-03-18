@@ -1,5 +1,5 @@
 <?xml version="1.0" ?>
-<robot name="cartesian_robot" >
+<robot name="cartesian_">
 	<link name="dummy" > </link>
 		<joint name="dummy_joint" type="fixed">
 			<parent link="dummy"/>
@@ -169,11 +169,11 @@
 		<type>transmission_interface/SimpleTransmission</type>
 		<joint name="joint1">
 			<hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
-			<hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+			<!-- <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface> -->
 		</joint>
 		<actuator name="act_joint1">
 			<hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
-			<hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+			<!-- <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface> -->
 			<mechanicalReduction>1</mechanicalReduction>		// CONFIG
 		</actuator>
 	</transmission>
@@ -181,11 +181,11 @@
 		<type>transmission_interface/SimpleTransmission</type>
 		<joint name="joint2">
 			<hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
-			<hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+			<!-- <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface> -->
 		</joint>
 		<actuator name="act_joint2">
 			<hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
-			<hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+			<!-- <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface> -->
 			<mechanicalReduction>1</mechanicalReduction>		// CONFIG
 		</actuator>
 	</transmission>
@@ -193,18 +193,16 @@
 		<type>transmission_interface/SimpleTransmission</type>
 		<joint name="joint3">
 			<hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
-			<hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+			<!-- <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface> -->
 		</joint>
 		<actuator name="act_joint3">
 			<hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
-			<hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+			<!-- <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface> -->
 			<mechanicalReduction>312920.5793</mechanicalReduction>		// CONFIG
 		</actuator>
 	</transmission>
 
 	<gazebo>
-		<plugin name="gazebo_ros_control" filename="libgazebo_ros_control.so">
-			<robotNamespace>/cartesian_robot</robotNamespace>
-		</plugin>
+		<plugin name="gazebo_ros_control" filename="libgazebo_ros_control.so" />
 	</gazebo>
 </robot>

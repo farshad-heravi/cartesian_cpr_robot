@@ -1,22 +1,31 @@
-<launch>
+<!-- USAGE MANUAL:																								-->
+<!-- in the case that you include this file in another launch file,												-->
+<!-- provide the args:																							-->
+<!-- 	simulation: true if you only want to simulate it (rviz | gazebo)										-->
+<!-- 	publish_joint_states: true if you are not going to load joint_state_controller among your controllers	-->
+<!-- 	name_space: the namespace under which all nodes and topics will be grouped.								-->
+<!-- default topics, params, etc.:																				-->
+<!-- 		/cartesian_/robot_description																		-->
+<!-- 		/cartesian_/joint_states																			-->
 
-	<!-- when including this launch file into another launch file, provide the simulation argument as false if it is not a simulation -->
-	<arg name="simulation" default="false" />
-	<!-- if joint states of the cartesian robot is being published by the joint_states_publisher set this arg as false -->
-	<arg name="publish_joint_states" default="false" />
+<launch>
+	
 	<!-- the ns of the cartesian robot -->
 	<arg name="name_space" default="cartesian_" />
+	<!-- when including this launch file into another launch file, provide the simulation argument as false if it is not a simulation -->
+	<arg name="simulation" default="false" />
+	<!-- if joint states of the cartesian robot is being published by the joint_state_controller set this arg as false -->
+	<arg name="publish_joint_states" default="false" />
 	
-	<param if="$(arg simulation)" name="/$(arg name_space)/robot_description" textfile="$(find cartesian_description)/urdf/cartesian_robot_simulation.urdf" />	
-	<param unless="$(arg simulation)" name="/$(arg name_space)/robot_description" textfile="$(find cartesian_description)/urdf/cartesian_robot_hardware.urdf" />	
+	<group ns="/$(arg name_space)" >
+		<param if="$(arg simulation)" name="robot_description" textfile="$(find cartesian_description)/urdf/cartesian_robot_simulation.urdf" />
+		<param unless="$(arg simulation)" name="robot_description" textfile="$(find cartesian_description)/urdf/cartesian_robot_hardware.urdf" />	
 	
-	<!-- robot state publisher -->
-  	<node pkg="robot_state_publisher" type="robot_state_publisher" name="$(arg name_space)robot_state_publisher" />
+		<!-- robot state publisher -->
+		<node pkg="robot_state_publisher" type="robot_state_publisher" name="robot_state_publisher" />
 
-	<!-- joint state publisher with gui -->
-	<param name="use_gui" value="true" />
-	<node if="$(arg publish_joint_states)" pkg="joint_state_publisher" type="joint_state_publisher" name="$(arg name_space)joint_state_publisher">
-		<remap from="joint_states" to="$(arg name_space)/joint_states" />
-	</node>
+		<!-- joint state publisher with gui -->
+		<node if="$(arg publish_joint_states)" pkg="joint_state_publisher" type="joint_state_publisher" name="joint_state_publisher" />
+	</group>
 	
 </launch>

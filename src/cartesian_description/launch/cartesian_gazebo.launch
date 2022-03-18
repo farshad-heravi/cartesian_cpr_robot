@@ -1,5 +1,6 @@
-<?xml version="1.0" ?>
 <launch>
+
+	<arg name="name_space" default="cartesian_" />
 	<arg name="world" value="$(find cartesian_description)/worlds/my_world.world" />
 	<arg name="debug" value="false" />
 	<arg name="gui" value="true" />
@@ -20,16 +21,20 @@
 	<!-- Load robot into ros -->
 	<include file="$(find cartesian_description)/launch/cartesian_bringup.launch" >
 		<arg name="simulation" value="true" />
+		<arg name="publish_joint_states" value="$(arg publish_joint_states)" />
+		<arg name="name_space" value="$(arg name_space)" />
 	</include>
 
-	<!-- spawn the robot in gazebo -->
-	<arg name="x" value="0" />
-	<arg name="y" value="0" />
-	<arg name="z" value="0" />
-	<node	name="cartesian_robot"
-			pkg="gazebo_ros"
-			type="spawn_model"
-			output="screen"
-			args="-urdf -param robot_description -model robot1 -x $(arg x) -y $(arg y) -z $(arg z)" />
+	<group ns="/$(arg name_space)" >
+		<!-- spawn the robot in gazebo -->
+		<arg name="x" value="0" />
+		<arg name="y" value="0" />
+		<arg name="z" value="0" />
+		<node	name="$(arg name_space)_gazebo_node"
+				pkg="gazebo_ros"
+				type="spawn_model"
+				output="screen"
+				args="-urdf -param /$(arg name_space)/robot_description -model robot_$(arg name_space) -x $(arg x) -y $(arg y) -z $(arg z)" />
+	</group>
 	
 </launch>

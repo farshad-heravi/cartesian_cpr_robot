@@ -1,30 +1,25 @@
 <launch>
 
-  <arg name="robot_name" default="cartesian_robot" />
+  <arg name="name_space"  default="cartesian_" />
   <arg name="joint1_name" default="joint1" />
   <arg name="joint2_name" default="joint2" />
   <arg name="joint3_name" default="joint3" />
 
-  <!-- Load joint controller configurations from YAML file to parameter server -->
-  <rosparam file="$(find cartesian_controller)/config/controllers.yaml" command="load"/>
-
-  <!-- Spawn default controllers -->
+  <group ns="/$(arg name_space)">
+    <!-- Load joint controller configurations from YAML file to parameter server -->
+    <rosparam file="$(find cartesian_controller)/config/controllers.yaml" command="load"/>
+    
+    <!-- Spawn default controllers -->
     <node   pkg="controller_manager"
             type="controller_manager"
-            name="cartesian_controller_spawner"
+            name="controller_spawner"
             respawn="false"
             output="screen"
-            ns="/cartesian_robot"
             args="spawn 
-              /$(arg robot_name)/joint_state_controller
-              /$(arg robot_name)/$(arg joint1_name)/joint1_position_controller 
-              /$(arg robot_name)/$(arg joint2_name)/joint2_position_controller
-              /$(arg robot_name)/$(arg joint3_name)/joint3_position_controller" />
+              /$(arg name_space)/joint_state_controller
+              /$(arg name_space)/$(arg joint1_name)/position_controller 
+              /$(arg name_space)/$(arg joint2_name)/position_controller
+              /$(arg name_space)/$(arg joint3_name)/position_controller" />
+  </group>
   
-  <!-- convert joint states to TF transforms for rviz, etc -->
-  <!-- <node name="robot_state_publisher" pkg="robot_state_publisher" type="robot_state_publisher"
-    respawn="false" output="screen">
-    <remap from="/joint_states" to="/cartesian_robot/joint_states" />
-  </node> -->
-
 </launch>
