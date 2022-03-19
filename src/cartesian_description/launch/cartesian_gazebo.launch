@@ -1,11 +1,11 @@
 <launch>
 
-	<arg name="name_space" default="cartesian_" />
-	<arg name="world" value="$(find cartesian_description)/worlds/my_world.world" />
-	<arg name="debug" value="false" />
-	<arg name="gui" value="true" />
-	<arg name="pause" value="false" />
-	<arg name="publish_joint_states" value="false" />
+	<arg name="name_space"	default="cartesian_" />
+	<arg name="load_controllers" default="true" />
+	<arg name="world"		value="$(find cartesian_description)/worlds/my_world.world" />
+	<arg name="debug"		value="false" />
+	<arg name="gui"			value="true" />
+	<arg name="pause"		value="false" />
 	
 	<!-- Load empty world -->
 	<include file="$(find gazebo_ros)/launch/empty_world.launch">
@@ -21,7 +21,7 @@
 	<!-- Load robot into ros -->
 	<include file="$(find cartesian_description)/launch/cartesian_bringup.launch" >
 		<arg name="simulation" value="true" />
-		<arg name="publish_joint_states" value="$(arg publish_joint_states)" />
+		<arg name="load_controllers" value="$(arg load_controllers)" />
 		<arg name="name_space" value="$(arg name_space)" />
 	</include>
 
