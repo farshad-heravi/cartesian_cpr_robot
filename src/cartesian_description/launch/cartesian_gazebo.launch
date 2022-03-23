@@ -2,13 +2,17 @@
 
 	<arg name="name_space"	default="cartesian_" />
 	<arg name="load_controllers" default="true" />
-	<arg name="world"		value="$(find cartesian_description)/worlds/my_world.world" />
-	<arg name="debug"		value="false" />
-	<arg name="gui"			value="true" />
-	<arg name="pause"		value="false" />
+	<arg name="stand_alone" default="true" /> <!-- set to false if running in an other world-->
+	<arg name="world" default="$(find cartesian_description)/worlds/my_world.world" />
+	<arg name="debug" default="false" />
+	<arg name="gui" default="true" />
+	<arg name="pause" default="false" />
+	<arg name="x" default="0" />
+	<arg name="y" default="0" />
+	<arg name="z" default="0" />
 	
 	<!-- Load empty world -->
-	<include file="$(find gazebo_ros)/launch/empty_world.launch">
+	<include file="$(find gazebo_ros)/launch/empty_world.launch" if="$(arg stand_alone)">
 		<arg name="world_name" value="$(arg world)" />
 		<arg name="paused" value="false"/>
 		<arg name="use_sim_time" value="true"/>
@@ -27,9 +31,6 @@
 
 	<group ns="/$(arg name_space)" >
 		<!-- spawn the robot in gazebo -->
-		<arg name="x" value="0" />
-		<arg name="y" value="0" />
-		<arg name="z" value="0" />
 		<node	name="$(arg name_space)_gazebo_node"
 				pkg="gazebo_ros"
 				type="spawn_model"

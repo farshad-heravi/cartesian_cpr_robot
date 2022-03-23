@@ -30,6 +30,9 @@
 			<color rgba="${0/255} ${0/255} ${255/255} 1.0"/>
 		</material>
 	</link>
+	<gazebo reference="link1">
+    	<material>Gazebo/Black</material>
+  	</gazebo>
 
 		<joint name="joint1" type="prismatic" >
 			<origin xyz="0.120 0 0.055"/>
@@ -64,6 +67,9 @@
 			<color rgba="${255/255} ${0/255} ${0/255} 1.0"/>
 		</material>
 	</link>
+	<gazebo reference="link2">
+    	<material>Gazebo/Black</material>
+  	</gazebo>
 
 		<joint name="joint2" type="prismatic" >
 			<origin xyz="0 0.150 0.010"/>
@@ -99,6 +105,10 @@
 			<color rgba="${0/255} ${255/255} ${0/255} 1.0"/>
 		</material>
 	</link>
+	<gazebo reference="link3">
+    	<material>Gazebo/Black</material>
+  	</gazebo>
+	
 
 		<joint name="third_motor_mounting_joint" type="fixed" >
 			<origin xyz="0.0 0.0 0.0"/>	<!-- CONFIG -->
@@ -131,6 +141,9 @@
 			<color rgba="${0/255} ${255/255} ${0/255} 1.0"/>
 		</material>
 	</link>
+	<gazebo reference="mounting_link">
+    	<material>Gazebo/Black</material>
+  	</gazebo>
 
 		<joint name="joint3" type="continuous" >
 			<origin xyz="0.305 0.0 0.021"/>	<!-- CONFIG -->
@@ -163,6 +176,9 @@
 			izz="0.1"/>
 		</inertial>
 	</link>
+	<gazebo reference="circular_link">
+    	<material>Gazebo/Red</material>
+  	</gazebo>
 
 	<!-- Gazebo stuff -->
 	<transmission name="tran_joint1">
