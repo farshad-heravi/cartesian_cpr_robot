@@ -21,11 +21,15 @@
 	<arg name="joint2_name" default="joint2" />
 	<arg name="joint3_name" default="joint3" />
 	
+	<param name="cartesian_traj_topicname" value="/Pad_vector" />
 	<param name="cartesian_robot_name" value="$(arg name_space)" />
 	<param name="joint1" value="$(arg joint1_name)" />
 	<param name="joint2" value="$(arg joint2_name)" />
 	<param name="joint3" value="$(arg joint3_name)" />
 
+	<!-- load epos motor configs -->
+	<rosparam file="$(find cartesian_description)/config/epos_config.yaml" command="load" />
+	
 	<group ns="/$(arg name_space)" >
 		<param if="$(arg simulation)" name="robot_description" textfile="$(find cartesian_description)/urdf/cartesian_robot_simulation.urdf" />
 		<param unless="$(arg simulation)" name="robot_description" textfile="$(find cartesian_description)/urdf/cartesian_robot_hardware.urdf" />	
