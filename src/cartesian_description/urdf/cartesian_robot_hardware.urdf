@@ -35,7 +35,7 @@
 			<origin xyz="0.120 0 0.055"/>
 			<parent link="link1"/>
 			<child link="link2"/>
-			<limit effort="1000.0" lower="-10" upper="1000" velocity="0.5"/>
+			<limit effort="1000.0" lower="0" upper="1" velocity="0.5"/>
 			<dynamics damping="0.3" />
 		</joint>
 

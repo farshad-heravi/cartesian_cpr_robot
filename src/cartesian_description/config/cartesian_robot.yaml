@@ -1,0 +1,23 @@
+cartesian_:
+  sewing_start_point:
+    x: 0.3    # m
+    y: 0.3    # m
+    z: -1.57  # rad
+  home_point:
+    x: 0.2    # m
+    y: 0.3    # m
+    z: 1.57   # rad
+  gear_ratios:
+    joint1: 0.01114
+    joint2: 0.01114
+    joint3: 13.33
+  needle:
+    x: 0.0    # m
+    y: 0.0    # m
+  offsets:
+    x: 0.0    # m
+    y: 0.0    # m
+    z: 0.0    # m
+  third_link:
+    raduis: 0.0   # not needed for now!
+  
