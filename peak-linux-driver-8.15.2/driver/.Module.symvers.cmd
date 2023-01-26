@@ -1,0 +1,1 @@
+cmd_/home/smb/smb_repo_ws/src/cartesian_cpr_robot/peak-linux-driver-8.15.2/driver/Module.symvers := sed 's/\.ko$$/\.o/' /home/smb/smb_repo_ws/src/cartesian_cpr_robot/peak-linux-driver-8.15.2/driver/modules.order | scripts/mod/modpost -m -a  -o /home/smb/smb_repo_ws/src/cartesian_cpr_robot/peak-linux-driver-8.15.2/driver/Module.symvers -e -i Module.symvers   -T -

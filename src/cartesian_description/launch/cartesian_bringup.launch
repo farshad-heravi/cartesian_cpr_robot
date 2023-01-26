@@ -38,13 +38,14 @@
 		<node pkg="robot_state_publisher" type="robot_state_publisher" name="robot_state_publisher" />
 
 		<!-- joint state publisher or cartesian_controllers -->
-		<!-- I will publish it within CartesianRobotHW -->
-		<!-- <include if="$(arg load_controllers)" file="$(find cartesian_controller)/launch/cartesian_controller.launch" >
+		<!-- Only for simulation; comment out the following includes when working with hardware -->
+		<include if="$(arg load_controllers)" file="$(find cartesian_controller)/launch/cartesian_controller.launch" >
 			<arg name="name_space" value="$(arg name_space)" />
-		</include> -->
-		<!-- <node unless="$(arg load_controllers)" pkg="joint_state_publisher" type="joint_state_publisher" name="joint_state_publisher" >
+		</include>
+		<!--<node pkg="joint_state_publisher" type="joint_state_publisher" name="joint_state_publisher" >
 			<remap from="/joint_states" to="/$(arg name_space)/joint_states" />
 		</node> -->
+		<!-- END: Only for simulation; comment out the following includes when working with hardware -->
 
 		<!-- load motors parameters to rosparam -->
 		<rosparam file="$(find cartesian_description)/config/motors.yaml" command="load" />
@@ -54,7 +55,7 @@
 		<!-- <node name="cartesian_ik_node" pkg="cartesian_robot" type="cartesian_ik_node" /> -->
 
 		<!-- load maxon motor config -->
-		<rosparam file="$(find maxon_motor_bringup)/config/motor_config.yaml" command="load" />
+		<!-- <rosparam file="$(find maxon_motor_bringup)/config/motor_config.yaml" command="load" /> -->
 	</group>
 	
 </launch>

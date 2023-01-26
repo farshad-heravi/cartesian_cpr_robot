@@ -1,0 +1,1 @@
+cmd_/home/smb/smb_repo_ws/src/cartesian_cpr_robot/peak-linux-driver-8.15.2/driver/modules.order := {   echo /home/smb/smb_repo_ws/src/cartesian_cpr_robot/peak-linux-driver-8.15.2/driver/pcan.ko; :; } | awk '!x[$$0]++' - > /home/smb/smb_repo_ws/src/cartesian_cpr_robot/peak-linux-driver-8.15.2/driver/modules.order
